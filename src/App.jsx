@@ -6,15 +6,39 @@ import styles from './App.module.css';
 
 import './global.css';
 
-const posts = [
+// author: { avatar_url: "", name: "", role: "" }
+// publishedAt: Date
+// content: String
+
+const posts= [
   {
     id: 1,
     author: {
       avatarUrl: 'https://github.com/thalesluiz45.png',
       name: 'Thales Luiz',
-      role: 'Estudante'
-    }
-  }
+      role: 'Web Developer'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'paragraph', content: ',<a href=""> jane.design/doctorcare</a>'},
+    ],
+    publishedAt: new Date('2023-07-31 20:00:00')
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/thalesluiz45.png',
+      name: 'Maria Amália',
+      role: 'Educator'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifaa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'paragraph', content: ',<a href=""> jane.design/doctorcare</a>'},
+    ],
+    publishedAt: new Date('2023-07-30 20:00:00')
+  },
 ]
 
 export function App() {
@@ -26,14 +50,15 @@ export function App() {
         <Sidebar />
         
         <main>
-          <Post 
-            author='Thales Luiz'
-            content='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, atque. Iure, expedita porro quasi voluptatibus voluptatem consectetur, magni eos minima mollitia praesentium eius voluptates quia necessitatibus ab tempore recusandae harum.'
-          />
-          <Post 
-            author='Fulano'
-            content='Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda, atque. Iure, expedita porro quasi voluptatibus voluptatem consectetur, magni eos minima mollitia praesentium eius voluptates quia necessitatibus ab tempore recusandae harum.'
-          />
+          {posts.map(post => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
